@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AETHER | Búsqueda de Vuelos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav>
+        <a href="search.html" class="logo"><i class="fas fa-plane-departure"></i> AETHER</a>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Exclusive Destinations</a></li>
+            <li><a href="#">Our Fleet</a></li>
+            <li><a href="#">VIP Services</a></li>
+        </ul>
+        <a href="login.html" class="btn-login nav-links"><i class="far fa-user"></i> LOGIN</a>
+    </nav>
+
+    <section class="hero">
+        <h1>TRAVEL THE WORLD, REFINED.</h1>
+        <p>Premium Flights: Luxury, Comfort & Exclusivity in Every Destination.</p>
+        
+        <div class="search-container">
+            <form action="search_flights.php" method="GET" class="search-form">
+                <div class="input-group">
+                    <label><i class="fas fa-plane-departure"></i> Origin</label>
+                    <input type="text" name="origen" placeholder="Ej. Ciudad Juárez" required>
+                </div>
+                
+                <div class="input-group">
+                    <label><i class="fas fa-plane-arrival"></i> Destination</label>
+                    <input type="text" name="destino" placeholder="Ej. Cancún" required>
+                </div>
+
+                <div class="input-group">
+                    <label><i class="far fa-calendar-alt"></i> Depart Date</label>
+                    <input type="date" name="fecha" required>
+                </div>
+
+                <button type="submit" class="btn-search">Search Flights</button>
+            </form>
+        </div>
+    </section>
+
+</body>
+</html>
