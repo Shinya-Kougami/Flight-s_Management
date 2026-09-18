@@ -27,13 +27,14 @@ Sigue estos pasos para desplegar la aplicación en cualquier entorno local utili
    
 Ejecuta el siguiente comando en la raíz del proyecto para construir la imagen de PHP e iniciar la base de datos MySQL en segundo plano. 
 El script db/init.sql creará automáticamente las tablas y los vuelos de prueba.
-
+```bash
 docker-compose up -d --build
-
+```
 3. **Verificar que los servicios web y sql esten desplegados**
-
+```bash
 docker ps
-
+```
 4. **Acceder a la aplicacion web**
-
+```bash
 Abre un navegador web y navega a: http://localhost:8080/search.html
+```
