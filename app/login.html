@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AETHER | Iniciar Sesión</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="hero">
+    <nav>
+        <a href="search.html" class="logo">AETHER</a>
+        <a href="register.html" class="btn-login">REGISTRO</a>
+    </nav>
+    
+    <div class="search-container" style="max-width: 400px; width: 100%;">
+        <h2 style="margin-bottom: 20px; color: var(--gold); text-align: center;">Iniciar Sesión</h2>
+        <form action="auth.php" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+            <input type="hidden" name="action" value="login">
+            
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" name="email" required>
+            </div>
+            
+            <div class="input-group">
+                <label>Contraseña</label>
+                <input type="password" name="password" required>
+            </div>
+            
+            <button type="submit" class="btn-search" style="margin-top: 10px;">Entrar</button>
+        </form>
+    </div>
+</body>
+</html>
