@@ -29,4 +29,5 @@ CREATE TABLE Reservations (
 INSERT INTO Flights (origen, destino, fecha_salida, precio) VALUES
 ('Ciudad Juárez', 'Ciudad de México', '2026-10-15 10:00:00', 1500.00),
 ('Ciudad Juárez', 'Monterrey', '2026-10-16 14:30:00', 1200.00),
-('Guadalajara', 'Cancún', '2026-10-20 08:15:00', 2500.00);
+('Guadalajara', 'Cancún', '2026-10-20 08:15:00', 2500.00),
+('Hola', 'Mundo', '2026-10-20 08:15:00', 2500.00);
