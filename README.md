@@ -21,7 +21,6 @@ Sigue estos pasos para desplegar la aplicación en cualquier entorno local utili
    ```bash
    git clone https://github.com/Shinya-Kougami/Flight-s_Management
    cd sistema-vueloslight-s_Management
-   Levantar la infraestructura con Docker Compose:
    
 2. **Ejecutar Docker compose**
    
