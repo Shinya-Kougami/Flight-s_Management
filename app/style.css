@@ -179,3 +179,95 @@ nav {
     margin: 40px auto;
     padding: 20px;
 }
+
+/* Estilos para los select (listas desplegables) */
+.select-input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-light);
+    padding: 8px 0;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+    appearance: none;
+    -webkit-appearance: none;
+}
+.select-input option {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+}
+.select-input:focus {
+    border-bottom: 1px solid var(--gold);
+}
+
+/* Auth Nav */
+.nav-auth {
+    display: flex;
+    align-items: center;
+}
+
+/* Navegación suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Secciones Informativas */
+.info-section {
+    padding: 80px 50px;
+    text-align: center;
+}
+.section-title {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+.card-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+.card {
+    width: 300px;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    box-shadow: inset 0 -100px 100px -20px rgba(0,0,0,0.9);
+    transition: transform 0.3s;
+}
+.card:hover {
+    transform: translateY(-10px);
+}
+.card h3 {
+    color: var(--gold);
+    margin-bottom: 5px;
+}
+.services-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    color: var(--text-light);
+}
+.service-item i {
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 15px;
+}
+.auth-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #888;
+    text-decoration: none;
+    font-size: 14px;
+}
+.auth-link:hover {
+    color: var(--gold);
+}
