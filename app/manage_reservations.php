@@ -2,15 +2,26 @@
 session_start();
 require 'db.php';
 
-// Verificar que el usuario haya iniciado sesión
 if (!isset($_SESSION['user_id'])) {
-    echo "<script>alert('Debes iniciar sesión para ver tus reservas.'); window.location.href='login.html';</script>";
+    echo "<script>alert('Debes iniciar sesión para ver tus reservas.'); window.location.href='index.php';</script>";
     exit;
 }
 
 $user_id = $_SESSION['user_id'];
 
-// Consulta SQL con JOIN para obtener los datos de la reserva y del vuelo
+// Lógica para eliminar la reserva si se envió la solicitud
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['action'] == 'delete') {
+    $reserva_id = $_POST['reserva_id'];
+    $stmt_delete = $pdo->prepare("DELETE FROM Reservations WHERE id = ? AND user_id = ?");
+    if($stmt_delete->execute([$reserva_id, $user_id])) {
+        echo "<script>alert('Reserva cancelada con éxito.'); window.location.href='manage_reservations.php';</script>";
+        exit;
+    } else {
+        echo "<script>alert('Hubo un error al cancelar la reserva.');</script>";
+    }
+}
+
+// Obtener las reservas actualizadas
 $sql = "SELECT r.id as reserva_id, r.fecha_reserva, f.origen, f.destino, f.fecha_salida, f.precio
         FROM Reservations r
         JOIN Flights f ON r.flight_id = f.id
@@ -29,9 +40,9 @@ $reservas = $stmt->fetchAll();
 </head>
 <body style="padding-top: 100px;">
     <nav>
-        <a href="search.html" class="logo">AETHER</a>
+        <a href="index.php" class="logo">AETHER</a>
         <div class="nav-links">
-            <a href="search.html" class="btn-login" style="border: none;">NUEVA BÚSQUEDA</a>
+            <a href="index.php" class="btn-login" style="border: none;">NUEVA BÚSQUEDA</a>
             <a href="#" class="btn-login" style="border: none; color: var(--gold);">HOLA, <?= htmlspecialchars($_SESSION['user_name']) ?></a>
         </div>
     </nav>
@@ -46,8 +57,8 @@ $reservas = $stmt->fetchAll();
                     <th style="padding: 15px;">Origen</th>
                     <th style="padding: 15px;">Destino</th>
                     <th style="padding: 15px;">Fecha de Vuelo</th>
-                    <th style="padding: 15px;">Fecha de Compra</th>
                     <th style="padding: 15px;">Precio Pagado</th>
+                    <th style="padding: 15px;">Acción</th>
                 </tr>
                 <?php foreach ($reservas as $reserva): ?>
                 <tr style="border-bottom: 1px solid var(--border-color);">
@@ -55,8 +66,14 @@ $reservas = $stmt->fetchAll();
                     <td style="padding: 15px;"><?= htmlspecialchars($reserva['origen']) ?></td>
                     <td style="padding: 15px;"><?= htmlspecialchars($reserva['destino']) ?></td>
                     <td style="padding: 15px;"><?= htmlspecialchars($reserva['fecha_salida']) ?></td>
-                    <td style="padding: 15px;"><?= htmlspecialchars($reserva['fecha_reserva']) ?></td>
                     <td style="padding: 15px; color: var(--gold); font-weight: bold;">$<?= htmlspecialchars($reserva['precio']) ?></td>
+                    <td style="padding: 15px;">
+                        <form method="POST" style="margin: 0;" onsubmit="return confirm('¿Estás seguro de que deseas cancelar esta reserva de vuelo? Esta acción no se puede deshacer.');">
+                            <input type="hidden" name="action" value="delete">
+                            <input type="hidden" name="reserva_id" value="<?= $reserva['reserva_id'] ?>">
+                            <button type="submit" style="background: #e74c3c; color: white; border: none; padding: 8px 15px; cursor: pointer; border-radius: 5px; font-weight: bold; font-size: 12px; text-transform: uppercase;">Eliminar</button>
+                        </form>
+                    </td>
                 </tr>
                 <?php endforeach; ?>
             </table>

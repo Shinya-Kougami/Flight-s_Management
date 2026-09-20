@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_name'] = $user['nombre'];
-            echo "<script>alert('Bienvenido " . $user['nombre'] . "'); window.location.href='search.html';</script>";
+            echo "<script>alert('Bienvenido " . $user['nombre'] . "'); window.location.href='index.php';</script>";
         } else {
             echo "<script>alert('Credenciales incorrectas'); window.history.back();</script>";
         }
